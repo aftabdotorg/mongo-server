@@ -2,7 +2,11 @@ GET http://localhost:5007/listings
 
 ###
 
-GET http://localhost:5007/listings?minPrice=1000&maxPrice2000
+GET http://localhost:5007/listings?minPrice=3000
+
+###
+
+GET http://localhost:5007/listings?minPrice=1700&maxPrice=2000
 
 ###
 

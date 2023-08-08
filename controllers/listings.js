@@ -3,6 +3,9 @@ import Listing from "../models/listings.js";
 const getListings = async (req, res) => {
   // ! url params should always be noun(listing) and plural in nature not verbs (getListing)
   const { minPrice, maxPrice } = req.query;
+
+  // ! condtional rendering
+  /*
   const allListings = await Listing.find();
   if (minPrice && maxPrice) {
     return res.send(
@@ -21,6 +24,24 @@ const getListings = async (req, res) => {
   }
 
   return res.send(allListings);
+};
+*/
+
+//! query casting
+if (minPrice && maxPrice) {
+  return res.send(
+    await Listing.find({
+      $and: [{ price: { $gt: minPrice } }, { price: { $lte: maxPrice } }],
+    })
+  );
+}
+if (minPrice) {
+  return res.send(await Listing.find({ price: { $gt: minPrice } }));
+}
+if (maxPrice) {
+  return res.send(await Listing.find({ price: { $lte: maxPrice } }));
+}
+return res.send(allListings);
 };
 
 const getListingById = async (req, res) => {
