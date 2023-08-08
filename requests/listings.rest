@@ -1,0 +1,22 @@
+GET http://localhost:5007/listings
+
+###
+
+GET http://localhost:5007/listings?minPrice=1000&maxPrice2000
+
+###
+
+GET http://localhost:5007/listings/64cf75b5e827bee1e1b471d3
+
+###
+
+POST http://localhost:5007/listings
+Content-Type: application/json
+
+{
+    "name": "Upgrad Home",
+    "description": "very nice home stay",
+    "price": 1800,
+    "currency": "INR"
+}
+
