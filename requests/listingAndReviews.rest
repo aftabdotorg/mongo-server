@@ -1,0 +1,11 @@
+GET http://localhost:5007/listingsAndReviews?page=556
+
+###
+
+POST http://localhost:5007/listingsAndReviews
+Content-Type: application/json
+
+{
+    "name":"New Hotel to stay"
+}
+
