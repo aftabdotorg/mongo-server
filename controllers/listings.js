@@ -27,35 +27,77 @@ const getListings = async (req, res) => {
 };
 */
 
-//! query casting
-if (minPrice && maxPrice) {
-  return res.send(
-    await Listing.find({
-      $and: [{ price: { $gt: minPrice } }, { price: { $lte: maxPrice } }],
-    })
-  );
-}
-if (minPrice) {
-  return res.send(await Listing.find({ price: { $gt: minPrice } }));
-}
-if (maxPrice) {
-  return res.send(await Listing.find({ price: { $lte: maxPrice } }));
-}
-return res.send(allListings);
+  //! query casting
+  if (minPrice && maxPrice) {
+    return res.send(
+      await Listing.find({
+        $and: [{ price: { $gt: minPrice } }, { price: { $lte: maxPrice } }],
+      })
+    );
+  }
+  if (minPrice) {
+    return res.send(await Listing.find({ price: { $gt: minPrice } }));
+  }
+  if (maxPrice) {
+    return res.send(await Listing.find({ price: { $lte: maxPrice } }));
+  }
+  return res.send(await Listing.find());
 };
 
 const getListingById = async (req, res) => {
-  console.log(req.params);
-  return res.send(await Listing.findById(req.params.id));
+  // console.log(req.params);
+  if (await Listing.findById(req.params.id)) {
+    return res.send(await Listing.findById(req.params.id));
+  }
+  return res.status(404).send("The requested listing couldn't be found.");
 };
 
 const createListing = async (req, res) => {
   const newListing = await Listing.create(req.body);
 
-  return res.send({
+  return res.status(201).send({
     id: newListing._id,
     created: true,
   });
 };
 
-export { getListings, createListing, getListingById };
+const replaceListing = async (req, res) => {
+  console.log("request incoming");
+  try {
+    const replacedListing = await Listing.findOneAndReplace(
+      { _id: req.params.id },
+      req.body,
+      { returnDocument: "after" }
+    );
+    return res.send(replacedListing);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
+const updateListing = async (req, res) => {
+  try {
+    const replacedListing = await Listing.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body,
+      { returnDocument: "after" }
+    );
+    return res.send(replacedListing);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
+const deleteListing = async (req, res) => {
+  await Listing.findOneAndDelete({ _id: req.params.id });
+  return res.status(204);
+};
+
+export {
+  getListings,
+  createListing,
+  getListingById,
+  replaceListing,
+  updateListing,
+  deleteListing,
+};

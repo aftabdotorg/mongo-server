@@ -1,12 +1,15 @@
 GET http://localhost:5007/listings
 
 ###
+GET http://localhost:5007/listings/64cf7d191d942657cbc50096
+
+###
 
 GET http://localhost:5007/listings?minPrice=3000
 
 ###
 
-GET http://localhost:5007/listings?minPrice=1700&maxPrice=2000
+GET http://localhost:5007/listings?minPrice=1700&maxPrice=1890
 
 ###
 
@@ -23,4 +26,41 @@ Content-Type: application/json
     "price": 1800,
     "currency": "INR"
 }
+
+###
+
+PUT  http://localhost:5007/listings/64cf7d921d942657cbc50099
+Content-Type: application/json
+
+{
+    "name": "Taj Palace",
+    "description": "Luxury stays",
+    "price": 70000,
+    "currency": "INR"
+}
+
+###
+
+PATCH http://localhost:5007/listings/64d2441742ee75d7281f12d5
+Content-Type: application/json
+
+{
+    "description":"indian 7 star stays"
+}
+
+###
+PATCH http://localhost:5007/listings/64cf7d0d1d942657cbc50094
+Content-Type: application/json
+
+{
+    "name":"continental"
+}
+
+###
+
+DELETE http://localhost:5007/listings/64cf75b5e827bee1e1b471d3
+
+###
+
+DELETE http://localhost:5007/listings/64cf7d191d942657cbc50096
 
