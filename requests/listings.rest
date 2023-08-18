@@ -1,7 +1,7 @@
 GET http://localhost:5007/listings
 
 ###
-GET http://localhost:5007/listings/64cf7d191d942657cbc50096
+GET http://localhost:5007/listings/64cf743819ad22b379fd0622
 
 ###
 
@@ -21,31 +21,31 @@ POST http://localhost:5007/listings
 Content-Type: application/json
 
 {
-    "name": "Upgrad Home",
+    "name": "New Home 3",
     "description": "very nice home stay",
-    "price": 1800,
+    "price": 1233,
     "currency": "INR"
 }
 
 ###
 
-PUT  http://localhost:5007/listings/64cf7d921d942657cbc50099
+PUT  http://localhost:5007/listings/64df5cb6c47b9432ec020770
 Content-Type: application/json
 
 {
-    "name": "Taj Palace",
-    "description": "Luxury stays",
-    "price": 70000,
+    "name": "New Home 5",
+    "description": "Lavish stays",
+    "price": 77777,
     "currency": "INR"
 }
 
 ###
 
-PATCH http://localhost:5007/listings/64d2441742ee75d7281f12d5
+PATCH http://localhost:5007/listings/64df5cb6c47b9432ec020770
 Content-Type: application/json
 
 {
-    "description":"indian 7 star stays"
+    "description":"indian lavish 7 star stays"
 }
 
 ###
