@@ -1,3 +1,6 @@
+GET http://localhost:5007/test
+
+###
 GET http://localhost:5007/listings
 
 ###
@@ -10,6 +13,9 @@ GET http://localhost:5007/listings?minPrice=3000
 ###
 
 GET http://localhost:5007/listings?minPrice=1700&maxPrice=1890
+
+###
+GET http://localhost:5007/listings?minPrice=70000
 
 ###
 
@@ -62,5 +68,5 @@ DELETE http://localhost:5007/listings/64cf75b5e827bee1e1b471d3
 
 ###
 
-DELETE http://localhost:5007/listings/64cf7d191d942657cbc50096
+DELETE http://localhost:5007/listings/64cf7d0d1d942657cbc50094
 
